@@ -97,13 +97,12 @@
       this.vuetify().theme.dark = true
 
       const self = this
-      console.log("Hooking bus listener")
+
       serverBus.$on("addFile", function(file: Blob) {
-        console.log("Received bus emission: addFile", file)
         self.files.push(file)
       })
+
       serverBus.$on("removeFile", function(index: number) {
-        console.log("Received bus emission: removeFile", index)
         self.files.splice(index, 1)
       })
     }
@@ -146,7 +145,7 @@
         const docBytes = await this.readUploadedFileAsArrayBuffer(file) as ArrayBuffer
         const donorPdfDoc: PDFDocument = await PDFDocument.load(docBytes)
 
-        console.log(`Copying document (${donorPdfDoc.getPageCount()} pages)`)
+        // console.log(`Copying document (${donorPdfDoc.getPageCount()} pages)`)
 
         for (let index = 0; index < donorPdfDoc.getPageCount(); index++) {
           const [copiedPage] = await mergedDoc.copyPages(donorPdfDoc, [index])
