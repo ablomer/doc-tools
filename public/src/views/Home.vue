@@ -42,7 +42,7 @@
       >
         <v-card
           id="emptyMessage"
-          class="mx-auto my-auto"
+          class="mx-auto my-auto unselectable"
           outlined
         >
 
@@ -51,7 +51,7 @@
             x-large
             style="opacity: .5; margin-top: .9em"
             >
-            mdi-file-document
+            mdi-file-document-outline
           </v-icon>
 
           <p
@@ -248,5 +248,12 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .unselectable {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
   }
 </style>
