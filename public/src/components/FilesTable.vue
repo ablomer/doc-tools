@@ -2,7 +2,7 @@
   <v-simple-table fixed-header>
     <template v-slot:default>
       <tbody>
-        <tr v-for="(file, index) in files" :key="index">
+        <tr v-for="(file, index) in files" :key="index" class="unselectable">
           <td>
             <v-icon>mdi-drag-horizontal</v-icon>
           </td>
@@ -50,3 +50,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.unselectable {
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+</style>

@@ -6,21 +6,21 @@
       app
       clipped
     >
-      <v-list dense>
-        <v-list-item link>
+      <v-list>
+        <v-list-item link :href="twitter">
           <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
+            <v-icon>mdi-twitter</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
+            <v-list-item-title>Twitter</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link :href="paypal">
           <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
+            <v-icon>mdi-gift-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
+            <v-list-item-title>Donate</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -31,7 +31,7 @@
       clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>docs.io</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -49,17 +49,17 @@
           <v-icon
             dark
             x-large
-            style="opacity: .65"
+            style="opacity: .5; margin-top: .9em"
             >
-            mdi-file-document-outline
+            mdi-file-document
           </v-icon>
 
           <p
             id="message"
-            class="font-normal"
-            style="font-size: 2em; opacity: .65"
+            class="font-weight-medium"
+            style="font-size: 1.6em; opacity: .5; margin-top: .3em"
           >
-            Drop files here
+            Drop PDFs here
           </p>
 
         </v-card>
@@ -89,6 +89,22 @@
         </v-btn>
       </v-layout>
 
+      <div class="text-center ma-2">
+        <v-snackbar
+          v-model="snackbar"
+          :timeout="7000"
+        >
+          Thank you for using docs.io, feel free to send me comments or suggestions on Twitter
+          <v-btn
+            color="blue darken-2"
+            text
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+        </v-snackbar>
+      </div>
+
     </v-content>
 
     <v-footer app>
@@ -116,9 +132,13 @@
   })
   export default class Home extends Vue {
 
+    twitter: string = "https://twitter.com/augustoblomer"
+    paypal: string = "http://paypal.me/augustoblomer"
+
     drawer: any = null
     files: Blob[] = []
     loading: boolean = false
+    snackbar: boolean = false
 
     vuetify(): any {
       const self = this as any
@@ -174,6 +194,7 @@
     async merge() {
       
       this.loading = true
+      this.snackbar = true
 
       const mergedDoc: PDFDocument = await PDFDocument.create()
 
@@ -207,7 +228,7 @@
     height: 10em;
     width: 18em;
     text-align: center;
-    opacity: 0.8;
+    opacity: 0.6;
   }
   
   .fab-container {
@@ -217,10 +238,10 @@
 
     text-align: center;
 
-    margin-bottom: 30px;
+    margin-bottom: 2em;
     
-    padding-bottom: 36px;
-    padding-right: 36px;
+    padding-bottom: 2em;
+    padding-right: 2em;
   }
 
   .center-horizontally {
