@@ -7,6 +7,17 @@
       clipped
     >
       <v-list>
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-merge</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Merge</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-divider />
+
         <v-list-item link :href="twitter">
           <v-list-item-action>
             <v-icon>mdi-twitter</v-icon>
@@ -75,6 +86,7 @@
           color="green"
           fab
           small
+          @click="fileSelectDialog()"
         >
           <v-icon dark>mdi-plus</v-icon>
         </v-btn>
@@ -215,6 +227,24 @@
       this.forceFileDownload(data)
 
       this.loading = false
+    }
+
+    fileSelectDialog() {
+      // https://stackoverflow.com/questions/16215771/how-open-select-file-dialog-via-js
+
+      var input = document.createElement('input')
+      input.type = 'file'
+      input.multiple = true
+      input.accept = ".pdf"
+
+      const self = this
+      input.onchange = function (e) {
+        for (let file of e.target.files) {
+          self.files.push(file)
+        }
+      }
+
+      input.click()
     }
 
   }

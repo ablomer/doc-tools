@@ -9,7 +9,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
+    redirect: '/merge'
+  },
+  {
+    path: '/merge',
+    name: 'merge',
     component: Home
   },
   {
