@@ -31,7 +31,7 @@
       clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>docs.io</v-toolbar-title>
+      <v-toolbar-title>doctools.io</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -94,7 +94,7 @@
           v-model="snackbar"
           :timeout="7000"
         >
-          Thank you for using docs.io, feel free to send me comments or suggestions on Twitter
+          Thank you for using doctools.io, feel free to send me comments or suggestions on Twitter
           <v-btn
             color="blue darken-2"
             text
