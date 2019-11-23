@@ -1,14 +1,6 @@
 <template>
   <v-simple-table fixed-header>
     <template v-slot:default>
-      <thead>
-        <tr>
-          <th></th>
-          <th class="text-left">Name</th>
-          <th class="text-left">Size</th>
-          <th></th>
-        </tr>
-      </thead>
       <tbody>
         <tr v-for="(file, index) in files" :key="index">
           <td>

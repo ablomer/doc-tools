@@ -35,6 +35,35 @@
     </v-app-bar>
 
     <v-content>
+
+      <v-layout
+        style="height: 100%"
+        v-if="files.length === 0"
+      >
+        <v-card
+          id="emptyMessage"
+          class="mx-auto my-auto"
+          outlined
+        >
+
+          <v-icon
+            dark
+            x-large
+            style="opacity: .65"
+            >
+            mdi-file-document-outline
+          </v-icon>
+
+          <p
+            id="message"
+            class="font-normal"
+            style="font-size: 2em; opacity: .65"
+          >
+            Drop files here
+          </p>
+
+        </v-card>
+      </v-layout>
   
       <files-table
         :files="files" />
@@ -173,6 +202,13 @@
 <style>
   [v-cloak] > * { display:none }
   [v-cloak]::before { content: "Loading…" }
+
+  #emptyMessage {
+    height: 10em;
+    width: 18em;
+    text-align: center;
+    opacity: 0.8;
+  }
   
   .fab-container {
     position: fixed;
