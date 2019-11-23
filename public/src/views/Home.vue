@@ -239,7 +239,8 @@
 
       const self = this
       input.onchange = function (e) {
-        for (let file of e.target.files) {
+        const target = e.target as any
+        for (let file of target.files) {
           self.files.push(file)
         }
       }
