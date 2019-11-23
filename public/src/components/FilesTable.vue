@@ -3,10 +3,10 @@
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-left"></th>
+          <th></th>
           <th class="text-left">Name</th>
           <th class="text-left">Size</th>
-          <th class="text-left"></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

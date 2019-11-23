@@ -35,23 +35,30 @@
     </v-app-bar>
 
     <v-content>
-      <v-card class="mx-auto">
+  
+      <files-table
+        :files="files" />
 
-        <files-table
-          :files="files" />
-
-      </v-card>
-
-      <v-btn
-        fab
-        bottom
-        right
-        :disabled="mergeDisabled()" 
-        :loading="loading"
-        @click="merge()"
-      >
-        <v-icon dark>mdi-merge</v-icon>
-      </v-btn>
+      <v-layout column class="fab-container">
+        <v-btn
+          class="center-horizontally"
+          style="margin-bottom: 16px"
+          color="green"
+          fab
+          small
+        >
+          <v-icon dark>mdi-plus</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          color="blue darken-2"
+          :disabled="mergeDisabled()" 
+          :loading="loading"
+          @click="merge()"
+        >
+          <v-icon dark>mdi-download</v-icon>
+        </v-btn>
+      </v-layout>
 
     </v-content>
 
@@ -166,4 +173,23 @@
 <style>
   [v-cloak] > * { display:none }
   [v-cloak]::before { content: "Loading…" }
+  
+  .fab-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+    
+    padding-bottom: 36px;
+    padding-right: 36px;
+  }
+
+  .center-horizontally {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
