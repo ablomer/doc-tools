@@ -9,10 +9,18 @@
       <v-list>
         <v-list-item link>
           <v-list-item-action>
-            <v-icon>mdi-merge</v-icon>
+            <v-icon>mdi-call-merge</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Merge</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link disabled>
+          <v-list-item-action>
+            <v-icon>mdi-call-split</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Split</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
