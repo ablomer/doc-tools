@@ -79,25 +79,40 @@
       <files-table />
 
       <v-layout column class="fab-container">
-        <v-btn
-          class="center-horizontally"
-          style="margin-bottom: 16px"
-          color="green"
-          fab
-          small
-          @click="fileSelectDialog()"
-        >
-          <v-icon dark>mdi-plus</v-icon>
-        </v-btn>
-        <v-btn
-          fab
-          color="blue darken-2"
-          :disabled="mergeDisabled()" 
-          :loading="loading"
-          @click="merge()"
-        >
-          <v-icon dark>mdi-check</v-icon>
-        </v-btn>
+
+        <v-tooltip left>
+          <template v-slot:activator="{ on }">
+            <v-btn
+              class="center-horizontally"
+              style="margin-bottom: 16px"
+              color="green"
+              fab
+              small
+              v-on="on"
+              @click="fileSelectDialog()"
+            >
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+          </template>
+          <span>Add files</span>
+        </v-tooltip>
+
+        <v-tooltip left>
+          <template v-slot:activator="{ on }">
+            <v-btn
+              fab
+              color="blue darken-2"
+              :disabled="mergeDisabled()" 
+              :loading="loading"
+              v-on="on"
+              @click="merge()"
+            >
+              <v-icon dark>mdi-check</v-icon>
+            </v-btn>
+          </template>
+          <span>Merge</span>
+        </v-tooltip>
+
       </v-layout>
 
       <div class="text-center ma-2">
