@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { serverBus } from './main'
 
 export default Vue.extend({
   name: 'App',
@@ -34,7 +33,7 @@ export default Vue.extend({
 
       if (droppedFiles) {
         for (let file of droppedFiles) {
-          serverBus.$emit('addFile', file)
+          this.$store.dispatch('addFile', file)
         }
       }
     }

@@ -76,8 +76,7 @@
         </v-card>
       </v-layout>
   
-      <files-table
-        :files="files" />
+      <files-table />
 
       <v-layout column class="fab-container">
         <v-btn
@@ -97,7 +96,7 @@
           :loading="loading"
           @click="merge()"
         >
-          <v-icon dark>mdi-download</v-icon>
+          <v-icon dark>mdi-check</v-icon>
         </v-btn>
       </v-layout>
 
@@ -134,8 +133,6 @@
   import Component from 'vue-class-component'
 
   import FilesTable from '@/components/FilesTable.vue'
-  
-  import { serverBus } from "../main"
 
   import { PDFDocument, PDFPage } from 'pdf-lib'
 
@@ -148,9 +145,12 @@
     paypal: string = "http://paypal.me/augustoblomer"
 
     drawer: any = null
-    files: Blob[] = []
     loading: boolean = false
     snackbar: boolean = false
+
+    get files() {
+      return this.$store.state.files
+    }
 
     vuetify(): any {
       const self = this as any
@@ -163,16 +163,6 @@
 
     created() {
       this.vuetify().theme.dark = true
-
-      const self = this
-
-      serverBus.$on("addFile", function(file: Blob) {
-        self.files.push(file)
-      })
-
-      serverBus.$on("removeFile", function(index: number) {
-        self.files.splice(index, 1)
-      })
     }
 
     readUploadedFileAsArrayBuffer(inputFile: Blob) {
@@ -241,7 +231,7 @@
       input.onchange = function (e) {
         const target = e.target as any
         for (let file of target.files) {
-          self.files.push(file)
+          self.$store.dispatch('addFile', file)
         }
       }
 

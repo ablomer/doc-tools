@@ -1,35 +1,46 @@
 <template>
-  <v-simple-table fixed-header>
-    <template v-slot:default>
-      <tbody>
-        <tr v-for="(file, index) in files" :key="index" class="unselectable">
-          <td>
-            <v-icon>mdi-drag-horizontal</v-icon>
-          </td>
-          <td>{{ file.name }}</td>
-          <td>{{ humanFileSize(file.size, false) }}</td>
-          <td>
-            <v-btn text icon color="red" @click="removeFile(index)">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-          </td>
-        </tr>
-      </tbody>
-    </template>
+  <v-simple-table>
+    <draggable v-model="files" tag="tbody">
+      <tr v-for="(file, index) in files" :key="index" class="unselectable">
+        <td style="col-1">
+          <v-icon>mdi-drag-horizontal</v-icon>
+        </td>
+        <td style="col-8">{{ file.name }}</td>
+        <td style="col-2">{{ humanFileSize(file.size, false) }}</td>
+        <td style="col-1">
+          <v-btn text icon color="red" @click="removeFile(index)">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </td>
+      </tr>
+    </draggable>
   </v-simple-table>
 </template>
 
 <script>
-import { serverBus } from "../main"
+// https://sortablejs.github.io/Vue.Draggable/#/table-example
+
+import draggable from 'vuedraggable'
 
 export default {
-  props: [
-    "files"
-  ],
+  components: {
+    draggable
+  },
+
+  computed: {
+    files: {
+      get() {
+        return this.$store.state.files
+      },
+      set(files) {
+        this.$store.dispatch('setFiles', files)
+      }
+    }
+  },
 
   methods: {
     removeFile(index) {
-      serverBus.$emit('removeFile', index)
+      this.$store.dispatch('removeFile', index)
     },
 
     humanFileSize(bytes, si) {
