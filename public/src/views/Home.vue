@@ -26,20 +26,20 @@
 
         <v-divider />
 
-        <v-list-item link :href="twitter">
+        <v-list-item link :href="issues">
           <v-list-item-action>
-            <v-icon>mdi-twitter</v-icon>
+            <v-icon>mdi-bug</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Twitter</v-list-item-title>
+            <v-list-item-title>Bug Report</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link :href="paypal">
+        <v-list-item link :href="github">
           <v-list-item-action>
-            <v-icon>mdi-gift-outline</v-icon>
+            <v-icon>mdi-account-tie-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Donate</v-list-item-title>
+            <v-list-item-title>About Me</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -142,7 +142,7 @@
     </v-content>
 
     <v-footer app>
-      <span>&copy; 2019 Augusto Blomer</span>
+      <span>&copy; 2024 Augusto Blomer</span>
     </v-footer>
   </v-app>
 </template>
@@ -164,8 +164,8 @@
   })
   export default class Home extends Vue {
 
-    twitter: string = "https://twitter.com/augustoblomer"
-    paypal: string = "http://paypal.me/augustoblomer"
+    issues: string = "https://github.com/ablomer/doc-tools/issues"
+    github: string = "http://github.com/ablomer"
 
     drawer: any = null
     loading: boolean = false
