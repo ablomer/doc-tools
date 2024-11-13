@@ -128,7 +128,7 @@
           v-model="snackbar"
           :timeout="7000"
         >
-          Thank you for using doctools.io, feel free to send me comments or suggestions on Twitter
+          Thank you for using doctools, feel free to send me comments or suggestions
           <v-btn
             color="blue darken-2"
             text
@@ -219,7 +219,7 @@
     async merge() {
       
       this.loading = true
-      this.snackbar = true
+      // this.snackbar = true
 
       const mergedDoc: PDFDocument = await PDFDocument.create()
 
